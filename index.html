@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Percurso APP Rubens Peixoto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: prancha técnica — planta UTM à esquerda, ficha da parada à direita; empilha no celular */
+:root{
+  --bg:#eef1ee; --paper:#fbfcfa; --ink:#1c2420; --muted:#5e6b64; --line:#c9d1cb; --grid:#dde3de;
+  --path:#b4581f; --water:#1f7fb8; --appfill:rgba(61,122,76,.16); --pathsoft:rgba(180,88,31,.14); --ref:#2d6f93; --app:#3d7a4c; --sel:#1c2420;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans Condensed","Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a17; --paper:#1b2320; --ink:#e4ebe6; --muted:#9aa8a0; --line:#34413a; --grid:#26302b;
+  --path:#e08a4e; --pathsoft:rgba(224,138,78,.18); --ref:#6fb3d8; --app:#7cc28f; --sel:#e4ebe6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a17; --paper:#1b2320; --ink:#e4ebe6; --muted:#9aa8a0; --line:#34413a; --grid:#26302b;
+  --path:#e08a4e; --pathsoft:rgba(224,138,78,.18); --ref:#6fb3d8; --app:#7cc28f; --sel:#e4ebe6; color-scheme:dark}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{display:flex;flex-direction:column;gap:14px;padding-block:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1500px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 24px}
+h1{font-family:var(--display);font-weight:700;font-size:1.55rem;margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{color:var(--muted);font-size:.9rem;margin:2px 0 0}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+button,select{font:inherit;color:var(--ink)}
+.btn{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.88rem}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible,select:focus-visible,textarea:focus-visible,.stop:focus-visible{outline:2px solid var(--path);outline-offset:2px}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:14px;align-items:start}
+@media (max-width:980px){.main{grid-template-columns:minmax(0,1fr)}}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:4px;min-width:0}
+.mapbox{position:relative}
+svg{display:block;width:100%;height:auto;max-height:78vh}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:10px 14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:22px;height:0;border-top:3px solid var(--path)}
+.sw.ref{border-top:2px dashed var(--ref)}
+.sw.dot{width:10px;height:10px;border:0;border-radius:50%;background:var(--path)}
+.sw.cone{width:12px;height:12px;border:0;background:var(--pathsoft);clip-path:polygon(50% 100%,0 0,100% 0)}
+.sw.bld{width:10px;height:10px;border:2px solid var(--ink);background:transparent}
+/* SVG */
+.g-grid line{stroke:var(--grid);stroke-width:.6}
+svg.sat-on{--app:#9be3a8;--appfill:rgba(120,230,140,.20);--water:#5fd0ff;--ink:#ffffff;--paper:#15211b;--grid:rgba(255,255,255,.22);--muted:#eef3ef;--ref:#62d2ff;--path:#ff9a3d;--pathsoft:rgba(255,154,61,.30)}
+.halo,.g-grid text{paint-order:stroke;stroke:var(--paper);stroke-width:2.2px;stroke-linejoin:round}
+svg.sat-on .trace{stroke-width:3.2}
+.g-grid text{fill:var(--muted);font:500 7px var(--mono)}
+.trace{fill:none;stroke:var(--path);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.ref{fill:none;stroke:var(--ref);stroke-width:1.6;stroke-dasharray:5 4}
+.refpt{fill:var(--paper);stroke:var(--ref);stroke-width:1.4}
+.reflbl{fill:var(--ref);font:600 7.5px var(--mono)}
+.unc{fill:var(--pathsoft);stroke:none;opacity:.55}
+.stop{cursor:pointer}
+.stop circle.dot{fill:var(--paper);stroke:var(--path);stroke-width:2}
+.stop text{fill:var(--ink);font:700 6px var(--display);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.stop.on circle.dot{fill:var(--path);stroke:var(--sel)}
+.stop.on text{fill:var(--paper)}
+.cone{fill:var(--pathsoft);stroke:var(--path);stroke-width:.6;stroke-opacity:.6}
+.cone.hl{fill:var(--path);fill-opacity:.35}
+.bld{fill:none;stroke:var(--ink);stroke-width:1.6}
+.bldreq{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:2 2}
+.bldreqlbl{fill:var(--muted);font:500 6px var(--display)}
+.app{fill:var(--appfill);stroke:var(--app);stroke-width:.9;stroke-dasharray:3 2}
+.rio{fill:none;stroke:var(--water);stroke-width:2.4;stroke-linecap:round}
+.riolbl{fill:var(--water);font:700 7px var(--display)}
+.bldlbl{fill:var(--ink);font:600 7.5px var(--display)}
+.na path{fill:var(--ink)} .na text{fill:var(--ink);font:700 9px var(--display);text-anchor:middle}
+.sb rect{stroke:var(--ink);stroke-width:.8} .sb .f{fill:var(--ink)} .sb .e{fill:var(--paper)} .sb text{fill:var(--ink);font:500 6.5px var(--mono);text-anchor:middle}
+.arrowhead{fill:var(--path)}
+.appb{fill:var(--appfill);stroke:var(--app);stroke-width:.8}
+.lot{fill:none;stroke:rgba(255,255,255,.45);stroke-width:.7}
+.lot.hot{stroke:#ff5ad1;stroke-width:2}
+.via{fill:none;stroke:#ffd23f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.rio.campo{stroke-dasharray:5 4}
+.pi{fill:#e8322b;stroke:#fff;stroke-width:.8;fill-opacity:.95}
+.pilbl{fill:#fff;font:700 9px var(--display);stroke:#000}
+.lotlbl{fill:var(--ink);font:700 8px var(--display)}
+.views{display:flex;gap:6px}
+.btn[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
+
+/* painel */
+.panel{padding:16px;display:flex;flex-direction:column;gap:14px}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ph h2{font-family:var(--display);font-size:1.35rem;margin:0;font-weight:700}
+.ph h2 small{font-weight:500;color:var(--muted);font-size:.95rem;margin-left:6px}
+.nav{display:flex;gap:6px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:.86rem}
+.kv dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;padding-top:2px}
+.kv dd{margin:0;font-family:var(--mono);font-size:.82rem;font-variant-numeric:tabular-nums}
+.kv a{color:var(--ref)}
+textarea{width:100%;box-sizing:border-box;min-height:62px;resize:vertical;font:inherit;font-size:.9rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px}
+.lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 6px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{display:flex;flex-direction:column;gap:6px;min-width:0}
+.card button.img{padding:0;border:1px solid var(--line);border-radius:3px;background:var(--bg);cursor:zoom-in;aspect-ratio:3/4;overflow:hidden;max-width:100%}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .row{display:flex;gap:6px;align-items:center;font-size:.8rem}
+.card .row b{font-family:var(--mono);font-weight:500;font-size:.78rem;color:var(--muted);min-width:2.4em}
+.card select{flex:1;min-width:0;font-size:.8rem;padding:3px 4px;background:var(--paper);border:1px solid var(--line);border-radius:4px}
+.compass{display:flex;gap:12px;align-items:flex-start}
+.compass button{padding:0;border:1px solid var(--line);border-radius:3px;background:#000;cursor:zoom-in;width:92px;flex:none}
+.compass img{display:block;width:100%}
+.compass p{margin:0;font-size:.85rem;color:var(--muted)}
+.note{font-size:.8rem;color:var(--muted);margin:0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:6px;font-size:.88rem}
+.lb{position:fixed;inset:0;background:rgba(10,14,12,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:20;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain}
+.lb p{color:#e4ebe6;margin:0;font-size:.9rem;text-align:center}
+.lb .x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));background:#e4ebe6;color:#141a17;border:0}
+.lb .prev,.lb .next{position:absolute;top:50%;background:#e4ebe6;color:#141a17;border:0}
+.lb .prev{left:max(12px,env(safe-area-inset-left,0px))} .lb .next{right:max(12px,env(safe-area-inset-right,0px))}
+.table{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.8rem}
+th,td{padding:5px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-size:.7rem}
+td.m{font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.on td{background:var(--pathsoft)}
+tbody tr{cursor:pointer}
+details summary{cursor:pointer;padding:10px 14px;font-weight:600}
+@media (prefers-reduced-motion:no-preference){.cone{transition:fill .15s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Percurso de acesso pela APP — Rubens Peixoto</h1>
+      <p class="sub">Levantamento a pé em 28/10/2026, 15:09–15:25 · 15 paradas com bússola · 41 fotos · acesso de ≈ 883 m desde a GRP-470 · 7 polígonos de intervenção em APP (≈ 957 m²) · Encantada, Garopaba/SC · PROT. 33016/2026</p>
+    </div>
+    <div class="tools">
+      <span class="views"><button class="btn" type="button" data-view="app" aria-pressed="true">Trecho em APP</button><button class="btn" type="button" data-view="full" aria-pressed="false">Rota completa</button></span>
+      <button class="btn" id="satBtn" type="button" aria-pressed="true">Satélite: ligado</button>
+      <button class="btn" id="copyBtn" type="button">Copiar dados das paradas</button>
+      <button class="btn" id="resetBtn" type="button">Desfazer meus ajustes</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <section class="sheet mapbox" aria-label="Planta do percurso">
+      <svg id="map" role="img" aria-label="Planta do percurso em coordenadas UTM"></svg>
+      <div class="legend">
+        <span><i class="sw"></i>Acesso existente: GRP-470 → edificação (≈ 883 m)</span>
+        <span><i class="sw dot"></i>Pontos de campo C1–C15 (bússola)</span>
+        <span><i class="sw" style="height:10px;border:0;background:#e8322b"></i>Polígonos de intervenção em APP (faixa de 4 m)</span>
+        <span><i class="sw" style="height:10px;border:1px solid var(--app);background:var(--appfill)"></i>APP 30 m (base cartográfica)</span>
+        <span><i class="sw" style="height:10px;border:1px dashed var(--app);background:var(--appfill)"></i>APP do curso d'água visto em campo (estimada)</span>
+        <span><i class="sw" style="border-top:3px solid var(--water)"></i>Curso d'água</span>
+        <span><i class="sw" style="border-top:2px solid #ff5ad1"></i>Imóveis atravessados</span>
+        <span><i class="sw" style="border-top:4px solid #ffd23f"></i>Via pública GRP-470</span>
+        <span><i class="sw cone"></i>Direção da foto</span>
+        <span>Satélite: Esri · Lotes/APP: Geo Studio 212</span>
+      </div>
+    </section>
+
+    <aside class="sheet panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <section class="sheet">
+    <details open>
+      <summary>Tabela de coordenadas das paradas</summary>
+      <div class="table"><table id="tbl"><thead><tr><th>Parada</th><th>Hora do print</th><th>Coordenadas (bússola)</th><th>E (UTM)</th><th>N (UTM)</th><th>Elev.</th><th>Fotos</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+  <p class="note">Coordenadas lidas dos prints da bússola do iPhone, que arredondam ao segundo de arco (≈ 30 m na latitude e ≈ 27 m na longitude). Por isso cada parada tem uma faixa de incerteza de cerca de ±15 m, desenhada em volta do ponto. Convertidas para UTM SIRGAS 2000, fuso 22S. A imagem de satélite foi encaixada pelas coordenadas e pode ter alguns metros de deslocamento. A direção de cada foto não vem no arquivo: escolha N, L, S, O… em cada foto e o cone aparece no mapa. Seus ajustes ficam salvos neste navegador.</p>
+</div>
+
+<div class="lb" id="lb" hidden>
+  <button class="btn x" type="button" id="lbX">Fechar</button>
+  <button class="btn prev" type="button" id="lbP" aria-label="Foto anterior">‹</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+  <button class="btn next" type="button" id="lbN" aria-label="Próxima foto">›</button>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const STOPS = [{"id":"C01","print":54,"printSrc":"fotos/b54.jpg","time":"15:25","dms":"28°3'25\" S  48°41'7\" O","lat":-28.056944,"lon":-48.685278,"E":727504.3,"N":6894327.3,"elev":160,"heading":359,"photos":[{"n":55,"src":"fotos/f55.jpg","th":"fotos/t55.jpg"},{"n":56,"src":"fotos/f56.jpg","th":"fotos/t56.jpg"}],"old":"P15"},{"id":"C02","print":49,"printSrc":"fotos/b49.jpg","time":"15:24","dms":"28°3'24\" S  48°41'7\" O","lat":-28.056667,"lon":-48.685278,"E":727504.9,"N":6894358.1,"elev":150,"heading":0,"photos":[{"n":50,"src":"fotos/f50.jpg","th":"fotos/t50.jpg"},{"n":51,"src":"fotos/f51.jpg","th":"fotos/t51.jpg"},{"n":52,"src":"fotos/f52.jpg","th":"fotos/t52.jpg"},{"n":53,"src":"fotos/f53.jpg","th":"fotos/t53.jpg"}],"old":"P14"},{"id":"C03","print":46,"printSrc":"fotos/b46.jpg","time":"15:23","dms":"28°3'23\" S  48°41'7\" O","lat":-28.056389,"lon":-48.685278,"E":727505.5,"N":6894388.9,"elev":150,"heading":359,"photos":[{"n":47,"src":"fotos/f47.jpg","th":"fotos/t47.jpg"},{"n":48,"src":"fotos/f48.jpg","th":"fotos/t48.jpg"}],"old":"P13"},{"id":"C04","print":42,"printSrc":"fotos/b42.jpg","time":"15:22","dms":"28°3'23\" S  48°41'8\" O","lat":-28.056389,"lon":-48.685556,"E":727478.2,"N":6894389.4,"elev":160,"heading":0,"photos":[{"n":43,"src":"fotos/f43.jpg","th":"fotos/t43.jpg"},{"n":44,"src":"fotos/f44.jpg","th":"fotos/t44.jpg"},{"n":45,"src":"fotos/f45.jpg","th":"fotos/t45.jpg"}],"old":"P12"},{"id":"C05","print":39,"printSrc":"fotos/b39.jpg","time":"15:21","dms":"28°3'23\" S  48°41'10\" O","lat":-28.056389,"lon":-48.686111,"E":727423.6,"N":6894390.4,"elev":160,"heading":0,"photos":[{"n":40,"src":"fotos/f40.jpg","th":"fotos/t40.jpg"},{"n":41,"src":"fotos/f41.jpg","th":"fotos/t41.jpg"}],"old":"P11"},{"id":"C06","print":36,"printSrc":"fotos/b36.jpg","time":"15:21","dms":"28°3'24\" S  48°41'12\" O","lat":-28.056667,"lon":-48.686667,"E":727368.4,"N":6894360.7,"elev":160,"heading":1,"photos":[{"n":37,"src":"fotos/f37.jpg","th":"fotos/t37.jpg"},{"n":38,"src":"fotos/f38.jpg","th":"fotos/t38.jpg"}],"old":"P10"},{"id":"C07","print":33,"printSrc":"fotos/b33.jpg","time":"15:20","dms":"28°3'24\" S  48°41'13\" O","lat":-28.056667,"lon":-48.686944,"E":727341.1,"N":6894361.2,"elev":160,"heading":1,"photos":[{"n":34,"src":"fotos/f34.jpg","th":"fotos/t34.jpg"},{"n":35,"src":"fotos/f35.jpg","th":"fotos/t35.jpg"}],"old":"P09"},{"id":"C08","print":1,"printSrc":"fotos/b01.jpg","time":"15:09","dms":"28°3'25\" S  48°41'13\" O","lat":-28.056944,"lon":-48.686944,"E":727340.5,"N":6894330.4,"elev":150,"heading":1,"photos":[{"n":2,"src":"fotos/f02.jpg","th":"fotos/t02.jpg"},{"n":3,"src":"fotos/f03.jpg","th":"fotos/t03.jpg"},{"n":4,"src":"fotos/f04.jpg","th":"fotos/t04.jpg"},{"n":5,"src":"fotos/f05.jpg","th":"fotos/t05.jpg"}],"old":"P01"},{"id":"C09","print":30,"printSrc":"fotos/b30.jpg","time":"15:18","dms":"28°3'26\" S  48°41'13\" O","lat":-28.057222,"lon":-48.686944,"E":727339.9,"N":6894299.6,"elev":150,"heading":0,"photos":[{"n":31,"src":"fotos/f31.jpg","th":"fotos/t31.jpg"},{"n":32,"src":"fotos/f32.jpg","th":"fotos/t32.jpg"}],"old":"P08"},{"id":"C10","print":26,"printSrc":"fotos/b26.jpg","time":"15:18","dms":"28°3'27\" S  48°41'15\" O","lat":-28.0575,"lon":-48.6875,"E":727284.7,"N":6894269.9,"elev":150,"heading":359,"photos":[{"n":27,"src":"fotos/f27.jpg","th":"fotos/t27.jpg"},{"n":28,"src":"fotos/f28.jpg","th":"fotos/t28.jpg"},{"n":29,"src":"fotos/f29.jpg","th":"fotos/t29.jpg"}],"old":"P07"},{"id":"C11","print":6,"printSrc":"fotos/b06.jpg","time":"15:12","dms":"28°3'28\" S  48°41'15\" O","lat":-28.057778,"lon":-48.6875,"E":727284.1,"N":6894239.1,"elev":150,"heading":0,"photos":[{"n":7,"src":"fotos/f07.jpg","th":"fotos/t07.jpg"},{"n":8,"src":"fotos/f08.jpg","th":"fotos/t08.jpg"},{"n":9,"src":"fotos/f09.jpg","th":"fotos/t09.jpg"},{"n":10,"src":"fotos/f10.jpg","th":"fotos/t10.jpg"},{"n":11,"src":"fotos/f11.jpg","th":"fotos/t11.jpg"},{"n":12,"src":"fotos/f12.jpg","th":"fotos/t12.jpg"}],"old":"P02"},{"id":"C12","print":23,"printSrc":"fotos/b23.jpg","time":"15:16","dms":"28°3'29\" S  48°41'14\" O","lat":-28.058056,"lon":-48.687222,"E":727310.8,"N":6894207.8,"elev":150,"heading":0,"photos":[{"n":24,"src":"fotos/f24.jpg","th":"fotos/t24.jpg"},{"n":25,"src":"fotos/f25.jpg","th":"fotos/t25.jpg"}],"old":"P06"},{"id":"C13","print":20,"printSrc":"fotos/b20.jpg","time":"15:16","dms":"28°3'30\" S  48°41'14\" O","lat":-28.058333,"lon":-48.687222,"E":727310.2,"N":6894177.0,"elev":160,"heading":359,"photos":[{"n":21,"src":"fotos/f21.jpg","th":"fotos/t21.jpg"},{"n":22,"src":"fotos/f22.jpg","th":"fotos/t22.jpg"}],"old":"P05"},{"id":"C14","print":13,"printSrc":"fotos/b13.jpg","time":"15:14","dms":"28°3'31\" S  48°41'14\" O","lat":-28.058611,"lon":-48.687222,"E":727309.6,"N":6894146.2,"elev":160,"heading":0,"photos":[{"n":14,"src":"fotos/f14.jpg","th":"fotos/t14.jpg"},{"n":15,"src":"fotos/f15.jpg","th":"fotos/t15.jpg"}],"old":"P03"},{"id":"C15","print":16,"printSrc":"fotos/b16.jpg","time":"15:14","dms":"28°3'31\" S  48°41'15\" O","lat":-28.058611,"lon":-48.6875,"E":727282.3,"N":6894146.8,"elev":170,"heading":0,"photos":[{"n":17,"src":"fotos/f17.jpg","th":"fotos/t17.jpg"},{"n":18,"src":"fotos/f18.jpg","th":"fotos/t18.jpg"},{"n":19,"src":"fotos/f19.jpg","th":"fotos/t19.jpg"}],"old":"P04"}];
+const NOTES = {
+ C01:"Início do levantamento a pé, na estrada de acesso existente, a ≈ 360 m da GRP-470. Do C1 até a GRP-470 não há APP.",
+ C02:"Travessia 1 — curso d'água em APP, lote 05.07.072.8989 (Rosalvo D. Marques). Polígono PI-01. Fotos 51 e 53.",
+ C03:"Estrada de cascalho; veículo ao fundo (foto 47).",
+ C04:"Bifurcação; ramal gramado.",
+ C05:"Estrada com cascalho.",
+ C06:"Estrada de chão sob vegetação.",
+ C07:"Estrada de chão; ponto onde o acesso vira para o sul, em direção ao imóvel.",
+ C08:"Travessia 2 — curso d'água em APP, divisa entre os lotes 05.07.072.8989 e 05.66.023.4598. Polígonos PI-02 e PI-03. Córrego com afloramento rochoso (fotos 2 e 4).",
+ C09:"Área gramada com poça d'água.",
+ C10:"Bambuzal e açude ao lado do caminho (foto 29).",
+ C11:"Travessia 3 — curso d'água identificado em campo (não consta na base cartográfica), lote 05.66.023.4598. Polígonos PI-04 e PI-05. Córrego com pedras e mangueira (fotos 7 e 9).",
+ C12:"Caminho gramado entre vegetação.",
+ C13:"Caminho gramado.",
+ C14:"Chegada à área da edificação (região do PR-03). Vista do vale.",
+ C15:"Edificação existente (foto 17) — fim do acesso."
+};
+const GEO = {"ext":[727110,727790,6893930,6894520],"lots":[{"i":"05.032.020.2584","a":12782.5,"hot":false,"own":"","r":[[727648.7,6894472.5],[727615.0,6894520.0],[727708.8,6894520.0],[727648.7,6894472.5]]},{"i":"05.07.072.8989","a":122599.2,"hot":true,"own":"Rosalvo Daniel Marques · (sem inscrição no cadastro)","r":[[727576.9,6894407.6],[727491.2,6894347.3],[727474.2,6894330.2],[727456.1,6894320.2],[727439.1,6894321.8],[727424.6,6894315.3],[727416.1,6894301.0],[727413.2,6894298.3],[727404.3,6894304.2],[727399.0,6894321.3],[727393.7,6894323.4],[727371.7,6894329.9],[727337.9,6894403.5],[727279.7,6894389.1],[727188.2,6894520.0],[727615.0,6894520.0],[727648.7,6894472.5],[727576.9,6894407.6]]},{"i":"s/ inscrição","a":3959.3,"hot":false,"own":"","r":[[727603.7,6894299.3],[727545.5,6894382.5],[727576.9,6894407.8],[727631.5,6894329.8],[727603.7,6894299.3]]},{"i":"s/ inscrição","a":42089.9,"hot":false,"own":"","r":[[727790.0,6894103.3],[727790.0,6893963.3],[727669.4,6894135.7],[727597.0,6894240.6],[727609.7,6894285.1],[727639.6,6894318.1],[727790.0,6894103.3]]},{"i":"05.66.023.4598","a":65751.0,"hot":true,"own":"Rubens de Oliveira Peixoto · Mat. 3.445","r":[[727148.1,6894266.2],[727179.7,6894326.4],[727212.4,6894427.7],[727264.2,6894378.2],[727274.3,6894379.2],[727320.5,6894391.3],[727370.8,6894322.8],[727395.5,6894311.9],[727414.4,6894286.1],[727110.0,6894070.4],[727110.0,6894236.7],[727148.1,6894266.2]]},{"i":"05.66.023.4347","a":69071.3,"hot":true,"own":"Rubens de Oliveira Peixoto · Mat. 3.446 · edificação","r":[[727421.4,6894238.8],[727415.7,6894215.4],[727418.2,6894206.8],[727415.2,6894159.9],[727420.6,6894110.2],[727198.9,6893955.1],[727169.8,6893993.7],[727110.0,6893958.0],[727110.0,6894070.4],[727414.4,6894286.1],[727417.2,6894276.5],[727421.4,6894238.8]]},{"i":"05.07.072.2072","a":1211367.1,"hot":false,"own":"","r":[[727212.4,6894427.7],[727158.5,6894337.1],[727147.5,6894266.4],[727110.0,6894251.4],[727110.0,6894520.0],[727136.4,6894520.0],[727212.4,6894427.7]]},{"i":"05.45.076.0475","a":31117.5,"hot":false,"own":"","r":[[727790.0,6893954.1],[727790.0,6893930.0],[727710.3,6893930.0],[727695.5,6893941.1],[727683.3,6893960.3],[727669.8,6893989.3],[727657.1,6894009.1],[727625.5,6894042.5],[727695.5,6894084.9],[727790.0,6893954.1]]},{"i":"05.32.020.1291","a":255429.5,"hot":false,"own":"","r":[[727674.5,6894268.2],[727752.5,6894337.6],[727790.0,6894385.0],[727790.0,6894103.3],[727674.5,6894268.2]]},{"i":"05.032.057.0365","a":39026.6,"hot":false,"own":"","r":[[727558.7,6894243.0],[727591.6,6894206.2],[727603.7,6894198.2],[727608.3,6894182.7],[727611.1,6894154.6],[727604.4,6894110.5],[727607.1,6894099.9],[727609.0,6894085.6],[727615.9,6894059.6],[727625.5,6894042.5],[727657.1,6894009.1],[727669.8,6893989.3],[727683.3,6893960.3],[727695.5,6893941.1],[727698.9,6893938.5],[727695.7,6893934.5],[727681.9,6893930.0],[727633.5,6893930.0],[727463.5,6894184.6],[727443.4,6894223.1],[727427.2,6894280.0],[727435.2,6894294.3],[727444.2,6894306.9],[727456.2,6894317.6],[727483.7,6894332.0],[727504.7,6894347.8],[727554.4,6894249.5],[727558.7,6894243.0]]},{"i":"05.032.020.2960","a":20215.6,"hot":false,"own":"","r":[[727772.5,6894520.0],[727790.0,6894520.0],[727790.0,6894494.5],[727772.5,6894520.0]]},{"i":"05.32.020.2367","a":36499.0,"hot":false,"own":"","r":[[727708.8,6894520.0],[727772.5,6894520.0],[727790.0,6894494.5],[727790.0,6894385.0],[727752.5,6894337.6],[727674.5,6894268.2],[727576.9,6894407.8],[727648.7,6894472.5],[727708.8,6894520.0]]},{"i":"05.45.076.0476","a":7616.7,"hot":false,"own":"","r":[[727617.6,6894060.6],[727606.0,6894110.3],[727612.3,6894155.5],[727605.0,6894190.1],[727590.3,6894209.0],[727576.2,6894217.9],[727585.2,6894237.7],[727695.5,6894084.9],[727625.5,6894042.5],[727617.6,6894060.6]]},{"i":"05.32.057.0001","a":19425.8,"hot":false,"own":"","r":[[727695.7,6893934.5],[727698.9,6893938.5],[727710.3,6893930.0],[727681.9,6893930.0],[727695.7,6893934.5]]}],"app":[[],[[727471.6,6893949.7],[727427.3,6894011.2],[727382.1,6894010.6],[727290.3,6893996.9],[727187.3,6893957.7],[727177.9,6893951.4],[727161.1,6893930.0],[727110.0,6893930.0],[727110.0,6893962.4],[727139.9,6893998.7],[727160.9,6894011.6],[727277.2,6894055.5],[727321.0,6894063.3],[727395.4,6894070.8],[727377.4,6894134.5],[727365.4,6894210.9],[727365.5,6894291.3],[727363.3,6894298.0],[727350.0,6894313.8],[727320.9,6894332.5],[727179.3,6894376.4],[727138.6,6894397.3],[727119.8,6894413.4],[727110.0,6894429.4],[727110.0,6894520.0],[727160.9,6894520.0],[727158.0,6894482.6],[727161.4,6894460.3],[727166.3,6894452.1],[727176.4,6894444.8],[727199.6,6894433.0],[727347.4,6894386.4],[727373.6,6894371.4],[727398.9,6894349.3],[727471.7,6894397.6],[727461.2,6894424.7],[727456.8,6894453.5],[727458.0,6894465.9],[727470.6,6894502.2],[727472.5,6894520.0],[727533.0,6894520.0],[727529.9,6894491.8],[727517.1,6894454.4],[727518.5,6894442.9],[727533.6,6894403.2],[727534.3,6894382.9],[727526.6,6894364.9],[727518.9,6894357.2],[727425.6,6894293.8],[727425.0,6894217.8],[727435.9,6894148.1],[727448.2,6894100.4],[727457.3,6894077.7],[727467.9,6894057.3],[727522.2,6893981.8],[727552.2,6893930.0],[727482.9,6893930.0],[727471.6,6893949.7]],[],[],[[727760.3,6893936.6],[727777.4,6893945.8],[727790.0,6893947.0],[727790.0,6893930.0],[727754.9,6893930.0],[727760.3,6893936.6]],[],[]],"appF":[[[727355.8,6894265.1],[727361.6,6894264.1],[727367.1,6894262.1],[727372.2,6894259.1],[727376.5,6894255.1],[727381.3,6894247.7],[727383.3,6894242.2],[727384.1,6894236.3],[727383.7,6894230.5],[727382.3,6894224.8],[727379.7,6894219.5],[727376.2,6894214.8],[727371.8,6894210.9],[727366.7,6894207.9],[727358.3,6894205.4],[727352.4,6894205.1],[727209.5,6894213.5],[727201.1,6894216.1],[727196.0,6894219.1],[727191.7,6894223.1],[727186.9,6894230.5],[727184.4,6894238.9],[727184.1,6894244.8],[727185.1,6894250.6],[727187.1,6894256.1],[727190.1,6894261.2],[727194.1,6894265.5],[727198.9,6894269.0],[727204.2,6894271.4],[727209.9,6894272.8],[727215.8,6894273.1],[727355.8,6894265.1]]],"hidro":[[],[],[[727123.1,6893930.0],[727161.8,6893978.2],[727174.9,6893985.1],[727282.5,6894026.0],[727324.8,6894033.6],[727380.0,6894040.6],[727442.3,6894041.4]],[],[],[],[[727393.2,6894306.2],[727380.7,6894324.8],[727370.3,6894336.0],[727355.2,6894347.7],[727332.8,6894360.2],[727188.2,6894405.1],[727153.6,6894423.3],[727142.9,6894432.6],[727133.3,6894448.9],[727129.6,6894464.6],[727127.9,6894482.5],[727130.8,6894520.0]],[],[],[[727517.5,6893930.0],[727496.6,6893966.2],[727442.3,6894041.4],[727430.0,6894065.2],[727419.6,6894091.1],[727406.5,6894142.0],[727395.0,6894215.6],[727395.6,6894294.2],[727393.2,6894306.2]],[[727393.2,6894306.2],[727417.3,6894325.7],[727501.9,6894382.0],[727504.8,6894388.3],[727504.3,6894396.7],[727489.2,6894435.6],[727486.6,6894457.1],[727500.0,6894495.1],[727502.8,6894520.0]]],"ruas":[[[727710.2,6893930.0],[727692.6,6893946.9],[727682.7,6893969.2],[727669.6,6893994.7],[727630.8,6894035.9],[727615.9,6894059.6],[727609.0,6894085.6],[727604.4,6894110.5],[727609.4,6894154.7],[727602.3,6894187.8],[727588.5,6894207.6],[727576.8,6894215.8],[727585.2,6894237.7],[727588.0,6894253.0],[727595.7,6894284.4],[727605.5,6894298.8],[727618.3,6894312.2],[727644.5,6894343.3],[727658.6,6894373.0],[727667.5,6894411.1]],[[727667.5,6894411.1],[727687.9,6894458.5],[727708.7,6894486.7],[727712.7,6894511.9],[727711.6,6894520.0]],[],[]],"south":[[727637.3,6894033.6],[727628.1,6894039.5],[727621.9,6894043.0],[727615.7,6894046.9],[727609.6,6894051.0],[727603.4,6894055.5],[727597.3,6894060.1],[727591.1,6894064.9],[727585.0,6894069.6],[727578.8,6894074.4],[727572.7,6894079.3],[727566.9,6894084.5],[727561.6,6894090.2],[727556.6,6894096.2],[727551.8,6894102.4],[727547.0,6894108.4],[727542.1,6894114.2],[727536.7,6894119.8],[727530.9,6894125.4],[727524.9,6894130.9],[727519.1,6894136.6],[727513.9,6894142.5],[727509.8,6894148.7],[727506.6,6894154.9],[727504.4,6894161.2],[727503.0,6894167.4],[727502.0,6894173.6],[727501.1,6894179.9],[727499.7,6894186.1],[727498.0,6894192.3],[727495.8,6894198.6],[727493.6,6894204.8],[727491.2,6894211.1],[727489.2,6894217.3],[727487.5,6894223.5],[727486.2,6894229.8],[727485.5,6894236.0],[727484.9,6894242.2],[727484.7,6894248.4],[727484.6,6894254.6],[727484.7,6894260.8],[727484.8,6894267.0],[727485.1,6894273.2],[727485.6,6894279.4],[727486.2,6894285.6],[727487.2,6894291.8],[727488.5,6894297.9],[727490.2,6894304.1],[727492.2,6894310.3],[727494.7,6894316.4],[727497.5,6894322.6],[727500.1,6894328.7],[727500.1,6894328.7]],"fstream":[[727214.1,6894243.1],[727284.1,6894239.1],[727354.1,6894235.1]],"pis":[{"id":"PI-01","lote":"s/ inscrição (122.599 m²)","src":"base","area":310.5,"len":77.8,"r":[[727503.5,6894386.9],[727478.2,6894387.4],[727456.9,6894387.8],[727462.8,6894391.7],[727507.5,6894390.9],[727506.9,6894358.4],[727502.8,6894355.5]]},{"id":"PI-02","lote":"s/ inscrição (122.599 m²)","src":"base","area":92.9,"len":23.3,"r":[[727358.3,6894358.9],[727356.5,6894362.9],[727367.9,6894362.7],[727377.6,6894367.9],[727380.8,6894365.1],[727368.9,6894358.7]]},{"id":"PI-03","lote":"05.66.023.4598","src":"base","area":170.7,"len":42.8,"r":[[727343.1,6894359.2],[727342.5,6894330.4],[727342.3,6894318.8],[727338.3,6894321.3],[727339.1,6894363.2],[727341.1,6894363.2],[727344.1,6894359.1]]},{"id":"PI-04","lote":"05.66.023.4598","src":"campo","area":268.8,"len":67.3,"r":[[727286.1,6894239.8],[727309.9,6894212.0],[727306.6,6894209.7],[727282.1,6894238.4],[727282.7,6894269.2],[727287.2,6894269.0],[727286.7,6894268.7]]},{"id":"PI-05","lote":"05.66.023.4347","src":"campo","area":16.9,"len":4.4,"r":[[727312.8,6894208.5],[727312.8,6894207.4],[727308.3,6894207.7],[727306.6,6894209.7],[727309.9,6894212.0]]},{"id":"PI-06","lote":"faixa sem lote no cadastro gráfico","src":"base","area":37.5,"len":9.5,"r":[[727506.9,6894358.4],[727506.7,6894348.9],[727502.7,6894346.2],[727502.8,6894355.5]]},{"id":"PI-07","lote":"faixa sem lote no cadastro gráfico","src":"base","area":59.3,"len":14.9,"r":[[727344.1,6894359.1],[727341.1,6894363.2],[727356.5,6894362.9],[727358.3,6894358.9]]}]};
+const BLD = {E:727280,N:6894161};
+const DIRS = [["","—"],["0","N"],["45","NE"],["90","L"],["135","SE"],["180","S"],["225","SO"],["270","O"],["315","NO"]];
+const KEY = "percurso-rubens-app-v4";
+
+let st = {dirs:{}, moves:{}, notes:{}};
+try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); if(s) st = Object.assign(st,s); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){} }
+
+const allPhotos = STOPS.flatMap(s => s.photos.map(p => ({...p, home:s.id})));
+function photosOf(id){ return allPhotos.filter(p => (st.moves[p.n]||p.home) === id); }
+function noteOf(id){ return st.notes[id] ?? NOTES[id] ?? ""; }
+
+/* ---------- mapa ---------- */
+const [E0,E1,N0,N1] = GEO.ext;
+const W = E1-E0, H = N1-N0;
+const X = e => e-E0, Y = n => N1-n;
+const VIEWS = { full:[0,0,W,H], app:[X(727215),Y(6894420),X(727560)-X(727215),Y(6894120)-Y(6894420)] };
+const svg = document.getElementById("map");
+function setView(v){ svg.setAttribute("viewBox", VIEWS[v].map(n=>n.toFixed(1)).join(" ")); document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.view===v)); }
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); (parent||svg).appendChild(e); return e; }
+const pts = r => r.map(([e,n])=>`${X(e).toFixed(1)},${Y(n).toFixed(1)}`).join(" ");
+
+const gPIs = document.createElementNS("http://www.w3.org/2000/svg","g");
+function drawStatic(){
+  const defs = el("defs",{});
+  const mk = el("marker",{id:"ah",viewBox:"0 0 10 10",refX:"5",refY:"5",markerWidth:"5",markerHeight:"5",orient:"auto"},defs);
+  el("path",{d:"M0,1 L9,5 L0,9 z",class:"arrowhead"},mk);
+  el("rect",{width:W,height:H,style:"fill:var(--paper)"});
+  el("image",{id:"satimg",href:"fotos/satelite2.jpg",x:0,y:0,width:W,height:H,preserveAspectRatio:"none"});
+  const g = el("g",{class:"g-grid"});
+  const step=100;
+  for(let e=Math.ceil(E0/step)*step; e<E1; e+=step){ el("line",{x1:X(e),y1:0,x2:X(e),y2:H},g); const t=el("text",{x:X(e)+2,y:H-4},g); t.textContent="E "+e.toLocaleString("pt-BR"); }
+  for(let n=Math.ceil(N0/step)*step; n<N1; n+=step){ el("line",{x1:0,y1:Y(n),x2:W,y2:Y(n)},g); const t=el("text",{x:3,y:Y(n)-2},g); t.textContent="N "+n.toLocaleString("pt-BR"); }
+  GEO.app.forEach(r=>el("polygon",{class:"appb",points:pts(r)}));
+  GEO.appF.forEach(r=>el("polygon",{class:"app",points:pts(r)}));
+  GEO.lots.forEach(l=>{ const p=el("polygon",{class:"lot"+(l.hot?" hot":""),points:pts(l.r)}); const tt=el("title",{},p); tt.textContent=`${l.i} · ${Math.round(l.a).toLocaleString("pt-BR")} m²${l.own?" · "+l.own:""}`; });
+  GEO.hidro.forEach(r=>el("polyline",{class:"rio",points:pts(r)}));
+  el("polyline",{class:"rio campo",points:pts(GEO.fstream)});
+  GEO.ruas.forEach(r=>el("polyline",{class:"via",points:pts(r)}));
+  el("polyline",{class:"trace",points:pts(GEO.south)});
+  GEO.pis.forEach(p=>{ const q=el("polygon",{class:"pi",points:pts(p.r)},gPIs); const tt=el("title",{},q); tt.textContent=`${p.id} · ${p.lote} · ${p.area.toLocaleString("pt-BR")} m² · ${p.len.toLocaleString("pt-BR")} m de acesso em APP`;
+    const c=p.r.reduce((a,v)=>[a[0]+v[0]/p.r.length,a[1]+v[1]/p.r.length],[0,0]); const t=el("text",{class:"pilbl halo",x:X(c[0])+11,y:Y(c[1])+3},gPIs); t.textContent=p.id; });
+  const LBL=[["05.07.072.8989 — Rosalvo D. Marques",727222,6894410],["05.66.023.4598 — Rubens",727222,6894300],["05.66.023.4347 — Rubens (edificação)",727222,6894127],["GRP-470 (via pública)",727560,6894040]];
+  LBL.forEach(([s,e,n])=>{ const t=el("text",{class:"lotlbl halo",x:X(e),y:Y(n)}); t.textContent=s; });
+  el("rect",{class:"bld",x:X(BLD.E)-6,y:Y(BLD.N)-5,width:12,height:10});
+  const bt=el("text",{class:"bldlbl halo",x:X(BLD.E)-9,y:Y(BLD.N)-8,"text-anchor":"end"}); bt.textContent="Edificação";
+  const na=el("g",{class:"na",transform:`translate(${W-24},30)`});
+  el("path",{d:"M0,-16 L7,7 L0,2 L-7,7 z"},na); const nt=el("text",{y:20},na); nt.textContent="N";
+  const sb=el("g",{class:"sb",transform:`translate(${W-130},${H-24})`});
+  el("rect",{class:"f",x:0,y:0,width:50,height:4},sb); el("rect",{class:"e",x:50,y:0,width:50,height:4},sb);
+  [[0,"0"],[50,"50"],[100,"100 m"]].forEach(([x,l])=>{ const t=el("text",{x,y:-4},sb); t.textContent=l; });
+}
+const gCones = el("g",{}), gPath = el("g",{}), gStops = el("g",{});
+function wedge(cx,cy,deg,r,half){
+  const a1=(deg-half-90)*Math.PI/180, a2=(deg+half-90)*Math.PI/180;
+  return `M${cx},${cy} L${cx+r*Math.cos(a1)},${cy+r*Math.sin(a1)} A${r},${r} 0 0 1 ${cx+r*Math.cos(a2)},${cy+r*Math.sin(a2)} z`;
+}
+function drawDynamic(){
+  gCones.innerHTML=""; gPath.innerHTML=""; gStops.innerHTML="";
+  STOPS.forEach(s=> el("circle",{class:"unc",cx:X(s.E),cy:Y(s.N),r:15},gPath));
+  // segmentos com seta no meio
+  for(let i=0;i<STOPS.length-1;i++){
+    const a=STOPS[i], b=STOPS[i+1], mx=(X(a.E)+X(b.E))/2, my=(Y(a.N)+Y(b.N))/2;
+    el("polyline",{class:"trace",points:`${X(a.E)},${Y(a.N)} ${mx},${my} ${X(b.E)},${Y(b.N)}`,"marker-mid":"url(#ah)"},gPath);
+  }
+  STOPS.forEach(s=>{
+    photosOf(s.id).forEach(p=>{ const d=st.dirs[p.n]; if(d!==undefined && d!==""){ el("path",{class:"cone"+(hl===p.n?" hl":""),d:wedge(X(s.E),Y(s.N),+d,26,24)},gCones); } });
+  });
+  STOPS.forEach((s,i)=>{
+    const g=el("g",{class:"stop"+(s.id===cur?" on":""),tabindex:"0",role:"button","aria-label":`Parada ${s.id}, ${s.time}`},gStops);
+    el("circle",{class:"dot",cx:X(s.E),cy:Y(s.N),r:5.5},g);
+    const t=el("text",{x:X(s.E),y:Y(s.N)},g); t.textContent=i+1;
+    g.addEventListener("click",()=>select(s.id));
+    g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(s.id); }});
+  });
+}
+
+/* ---------- painel ---------- */
+let cur = STOPS[0].id, hl = null;
+const panel = document.getElementById("panel");
+function select(id){ cur=id; render(); }
+function fmt(n){ return n.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1}); }
+function render(){
+  drawDynamic(); renderTable();
+  const i = STOPS.findIndex(s=>s.id===cur), s = STOPS[i], ph = photosOf(cur);
+  panel.innerHTML = `
+   <div class="ph"><h2>${s.id}<small>${s.time} · ${i+1} de ${STOPS.length}</small></h2>
+     <div class="nav"><button class="btn" type="button" id="pv" ${i===0?"disabled":""}>Anterior</button><button class="btn" type="button" id="nx" ${i===STOPS.length-1?"disabled":""}>Próxima</button></div></div>
+   <dl class="kv">
+     <dt>Bússola</dt><dd>${s.dms}</dd>
+     <dt>UTM 22S</dt><dd>E ${fmt(s.E)} · N ${fmt(s.N)}</dd>
+     <dt>Elevação</dt><dd>${s.elev} m · rumo do print ${s.heading}° N</dd>
+     <dt>Mapa</dt><dd><a href="https://www.google.com/maps?q=${s.lat},${s.lon}&t=k" target="_blank" rel="noopener">Abrir no Google Maps (satélite)</a></dd>
+   </dl>
+   <div><p class="lbl"><label for="note">Observação da parada</label></p><textarea id="note">${noteOf(cur).replace(/</g,"&lt;")}</textarea></div>
+   <div class="compass"><button type="button" id="cp" aria-label="Ampliar print da bússola"><img src="${s.printSrc}" alt="Print da bússola ${s.id}"></button>
+     <p>Print nº ${s.print} da sequência. Fotos que vieram logo depois dele estão abaixo; mova para outra parada se alguma estiver no lugar errado.</p></div>
+   <div><p class="lbl">Fotos desta parada (${ph.length})</p>
+     <div class="grid">${ph.map(p=>`
+       <div class="card" data-n="${p.n}">
+         <button type="button" class="img" data-open="${p.n}" aria-label="Ampliar foto ${p.n}"><img loading="lazy" src="${p.th}" alt="Foto ${p.n}"></button>
+         <div class="row"><b>#${p.n}</b><select id="d${p.n}" data-dir="${p.n}" aria-label="Direção da foto ${p.n}">${DIRS.map(([v,l])=>`<option value="${v}" ${(st.dirs[p.n]??"")===v?"selected":""}>${v===""?"Direção —":"Olhando p/ "+l}</option>`).join("")}</select></div>
+         <div class="row"><b></b><select id="m${p.n}" data-mv="${p.n}" aria-label="Parada da foto ${p.n}">${STOPS.map(o=>`<option value="${o.id}" ${o.id===cur?"selected":""}>Parada ${o.id}</option>`).join("")}</select></div>
+       </div>`).join("") || '<p class="note">Nenhuma foto nesta parada.</p>'}</div></div>`;
+  panel.querySelector("#pv").onclick=()=>select(STOPS[i-1].id);
+  panel.querySelector("#nx").onclick=()=>select(STOPS[i+1].id);
+  panel.querySelector("#note").oninput=e=>{ st.notes[cur]=e.target.value; save(); };
+  panel.querySelector("#cp").onclick=()=>openLb([{src:s.printSrc,cap:`Print da bússola — ${s.id}, ${s.time}`}],0);
+  panel.querySelectorAll("[data-dir]").forEach(x=>x.onchange=e=>{ const n=+e.target.dataset.dir; if(e.target.value==="") delete st.dirs[n]; else st.dirs[n]=e.target.value; save(); hl=n; drawDynamic(); });
+  panel.querySelectorAll("[data-mv]").forEach(x=>x.onchange=e=>{ const n=+e.target.dataset.mv, p=allPhotos.find(q=>q.n===n); if(e.target.value===p.home) delete st.moves[n]; else st.moves[n]=e.target.value; save(); toast(`Foto ${n} movida para ${e.target.value}`); render(); });
+  panel.querySelectorAll(".card").forEach(c=>{ c.onmouseenter=()=>{hl=+c.dataset.n; drawDynamic();}; c.onmouseleave=()=>{hl=null; drawDynamic();}; });
+  panel.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{ const list=ph.map(p=>({src:p.src,cap:`Foto ${p.n} — ${s.id}, ${s.time}${st.dirs[p.n]?" · olhando p/ "+DIRS.find(d=>d[0]===st.dirs[p.n])[1]:""}`})); openLb(list, ph.findIndex(p=>p.n===+b.dataset.open)); });
+}
+function renderTable(){
+  const tb=document.querySelector("#tbl tbody");
+  tb.innerHTML=STOPS.map(s=>`<tr data-id="${s.id}" class="${s.id===cur?"on":""}"><td><b>${s.id}</b></td><td class="m">${s.time}</td><td class="m">${s.dms}</td><td class="m">${fmt(s.E)}</td><td class="m">${fmt(s.N)}</td><td class="m">${s.elev} m</td><td class="m">${photosOf(s.id).map(p=>p.n).join(", ")}</td></tr>`).join("");
+  tb.querySelectorAll("tr").forEach(r=>r.onclick=()=>{ select(r.dataset.id); document.getElementById("map").scrollIntoView({behavior:"smooth",block:"nearest"}); });
+}
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg"), lbCap=document.getElementById("lbCap");
+let lbList=[], lbI=0;
+function openLb(list,i){ lbList=list; lbI=i; showLb(); lb.hidden=false; document.getElementById("lbX").focus(); }
+function showLb(){ lbImg.src=lbList[lbI].src; lbCap.textContent=lbList[lbI].cap; document.getElementById("lbP").hidden=lbI===0; document.getElementById("lbN").hidden=lbI===lbList.length-1; }
+document.getElementById("lbX").onclick=()=>lb.hidden=true;
+document.getElementById("lbP").onclick=()=>{ lbI--; showLb(); };
+document.getElementById("lbN").onclick=()=>{ lbI++; showLb(); };
+lb.addEventListener("click",e=>{ if(e.target===lb) lb.hidden=true; });
+document.addEventListener("keydown",e=>{ if(lb.hidden) return; if(e.key==="Escape") lb.hidden=true; if(e.key==="ArrowLeft"&&lbI>0){lbI--;showLb();} if(e.key==="ArrowRight"&&lbI<lbList.length-1){lbI++;showLb();} });
+
+/* ---------- ferramentas ---------- */
+const tEl=document.getElementById("toast"); let tT;
+function toast(m){ tEl.textContent=m; tEl.hidden=false; clearTimeout(tT); tT=setTimeout(()=>tEl.hidden=true,2200); }
+document.getElementById("copyBtn").onclick=()=>{
+  const data=STOPS.map(s=>({parada:s.id,hora:s.time,coord:s.dms,E:s.E,N:s.N,elev:s.elev,obs:noteOf(s.id),fotos:photosOf(s.id).map(p=>({foto:p.n,direcao:(DIRS.find(d=>d[0]===(st.dirs[p.n]??""))||["","—"])[1]}))}));
+  const txt=JSON.stringify(data,null,1);
+  navigator.clipboard.writeText(txt).then(()=>toast("Dados copiados — cole no chat")).catch(()=>{ const ta=document.getElementById("note"); if(ta){ ta.value=txt; ta.select(); } toast("Não deu para copiar direto; o texto foi colocado na caixa de observação para você copiar"); });
+};
+document.getElementById("resetBtn").onclick=()=>{ st={dirs:{},moves:{},notes:{}}; save(); toast("Ajustes desfeitos"); render(); };
+
+svg.classList.add("sat-on");
+document.getElementById("satBtn").onclick=e=>{ const on=!svg.classList.contains("sat-on"); svg.classList.toggle("sat-on",on); document.getElementById("satimg").style.display=on?"":"none"; e.target.textContent="Satélite: "+(on?"ligado":"desligado"); e.target.setAttribute("aria-pressed",on); };
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view)); setView("app");
+drawStatic(); svg.appendChild(gCones); svg.appendChild(gPath); svg.appendChild(gPIs); svg.appendChild(gStops); render();
+</script>
+
+</body>
+</html>
